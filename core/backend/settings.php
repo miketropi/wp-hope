@@ -23,3 +23,20 @@ function hope_settings_page_callback() {
   <div id="hope_settings"></div>
   <?
 }
+
+function hope_setting_tabs_register() {
+  return apply_filters('hope/setting_tabs', [
+    'general-settings' => [
+      'tabName' => __('General Settings', 'hope'),
+      'callbackFn' => '',
+    ],
+    'changelog' => [
+      'tabName' => __('Changelog', 'hope'),
+      'callbackFn' => '',
+    ],
+    'support' => [
+      'tabName' => __('Support', 'hope'),
+      'callbackFn' => '',
+    ],
+  ]); 
+}
