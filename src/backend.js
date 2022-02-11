@@ -7,4 +7,8 @@ import SettingsWrap from "./components/SettingsWrap";
  */
 import './scss/backend.scss';
 
-ReactDOM.render(<SettingsWrap />, document.getElementById("hope_settings"));
+const hopeSettingsElem = document.getElementById("hope_settings");
+
+if(hopeSettingsElem) {
+  ReactDOM.render(<SettingsWrap />, hopeSettingsElem);
+}

@@ -1,8 +1,16 @@
 import React from "react";
 
+const {__} = wp.i18n;
+
 const SettingsWrap = () => {
   return (
-    <div className="full-screen">
+    <div id="hope_settings_wrapper" className="full-screen">
+      <div className="hope-settings-header">
+        <div className="title-section">
+          <h1>{ __('Hope Settings', 'hope') }</h1>
+        </div>
+      </div>
+
       <div>
         <h1>
           React Page {" "}
