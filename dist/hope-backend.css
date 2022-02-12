@@ -25608,7 +25608,7 @@ body.hope-cause_page_hope-settings #wpcontent {
   color: black; }
 
 .hope-settings-body--entry-summary {
-  max-width: 800px;
-  width: 100%;
+  max-width: calc(100% - 40px);
+  width: 800px;
   margin: 0 auto; }
 

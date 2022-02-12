@@ -8,10 +8,11 @@ const SettingsPageProvider = ({children}) => {
 
   const value = {
     settingTabs: map(HOPE_DATA.settingTabs, (item, _key) => {
+      const { label, template } = item;
       return {
         _key,
-        name: item.tabName,
-        templateData: {}
+        name: label,
+        templateData: template
       }
     }),
     defaultSettingTabsActive, 

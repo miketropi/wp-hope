@@ -1,8 +1,9 @@
 import React from "react";
 import { useSettingsPage } from "../libs/context/SettingsPage";
 import { Menu } from "antd";
-import DynamicComponent from "../components/DynamicComponent";
+import { RenderDynamicComponent } from "../components/DynamicComponent";
 import styled from "styled-components";
+import map from 'lodash/map';
 
 const {__} = wp.i18n;
 const SettingNavWrapper = styled.div`
@@ -53,18 +54,10 @@ const SettingsWrap = () => {
 
       <div className="hope-settings-body">
         <div className="hope-settings-body--entry-summary">
-          {JSON.stringify(settingTabs)}
-          {defaultSettingTabsActive}
-          <br />
-          <a
-            className="button-line"
-            href="https://github.com/deityhub"
-            target="_blank"
-          >
-            Know more
-          </a>
-
-          <DynamicComponent tag="Input" attrs={ { placeholder: 'Hello...!' } } />
+          {
+            RenderDynamicComponent(settingTabs[0].templateData)
+          }
+          {/* <DynamicComponent tag="Input" attrs={ { placeholder: 'Hello...!' } } /> */}
         </div>
       </div>
     </div>
