@@ -24,19 +24,33 @@ function hope_settings_page_callback() {
   <?
 }
 
+function hope_tab_general_settings_template() {
+  return apply_filters('hope/tab-general-settings-template', [
+
+  ]);
+}
+
+function hope_tab_changelog_template() {
+  return apply_filters('hope/tab-changelog-template', []);
+}
+
+function hope_tab_support_template() {
+  return apply_filters('hope/tab-support-template', []);
+} 
+
 function hope_setting_tabs_register() {
   return apply_filters('hope/setting_tabs', [
     'general-settings' => [
       'tabName' => __('General Settings', 'hope'),
-      'callbackFn' => '',
+      'template' => hope_tab_general_settings_template(),
     ],
     'changelog' => [
       'tabName' => __('Changelog', 'hope'),
-      'callbackFn' => '',
+      'template' => hope_tab_changelog_template(),
     ],
     'support' => [
       'tabName' => __('Support', 'hope'),
-      'callbackFn' => '',
+      'template' => hope_tab_support_template(),
     ],
   ]); 
 }

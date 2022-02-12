@@ -1,38 +1,71 @@
 import React from "react";
-import {useBackendApp} from "../libs/context/BackendApp";
+import { useSettingsPage } from "../libs/context/SettingsPage";
+import { Menu } from "antd";
+import DynamicComponent from "../components/DynamicComponent";
+import styled from "styled-components";
 
 const {__} = wp.i18n;
+const SettingNavWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+  .ant-menu-horizontal {
+    border-bottom: none;
+  }
+`;
+
+const SettingNav = styled(Menu)`
+  
+`
 
 const SettingsWrap = () => {
-  const {message} = useBackendApp();
+  const {
+    settingTabs, 
+    defaultSettingTabsActive, 
+    setDefaultSettingTabsActive
+  } = useSettingsPage();
 
   return (
     <div id="hope_settings_wrapper" className="full-screen">
       <div className="hope-settings-header">
         <div className="title-section">
-          <h1>{ __('Hope', 'hope') }</h1>
+          <h1>{ HOPE_DATA.plgName }</h1>
+          <sup>{ __('version', 'hope') } { HOPE_DATA.plgVer }</sup>
         </div>
-        <div className="hope-menu">
-          <nav>
-            <a className="__active" href="#">{__('General Settings', 'hope')}</a>
-            <a href="#">{__('Changelog', 'hope')}</a>
-            <a href="#">{__('Support', 'hope')}</a>
-          </nav>
-        </div>
+        <SettingNavWrapper>
+          <SettingNav 
+            mode="horizontal"
+            selectedKeys={ [defaultSettingTabsActive] }
+            onClick={ e => {
+              setDefaultSettingTabsActive(e.key);
+            } }>
+            { settingTabs.map(item => {
+              return (
+                <Menu.Item key={ item._key }>
+                  { item.name }
+                </Menu.Item>
+              )
+            }) }
+          </SettingNav>
+        </SettingNavWrapper>
       </div>
 
-      <div>
-        <h1>
-          React Page {" "}
-        </h1>
-        <br />
-        <a
-          className="button-line"
-          href="https://github.com/deityhub"
-          target="_blank"
-        >
-          Know more
-        </a>
+      <div className="hope-settings-body">
+        <div className="hope-settings-body--entry-summary">
+          {JSON.stringify(settingTabs)}
+          {defaultSettingTabsActive}
+          <br />
+          <a
+            className="button-line"
+            href="https://github.com/deityhub"
+            target="_blank"
+          >
+            Know more
+          </a>
+
+          <DynamicComponent tag="Input" attrs={ { placeholder: 'Hello...!' } } />
+        </div>
       </div>
     </div>
   );
