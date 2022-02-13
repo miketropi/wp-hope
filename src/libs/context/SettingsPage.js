@@ -1,6 +1,6 @@
 import React, {createContext, useContext, useState, useEffect} from "react";
 import map from "lodash/map";
-import { setIn } from './helpers';
+import { updateObject } from './helpers';
 
 const SettingsPageContext = createContext();
 
@@ -17,7 +17,7 @@ const SettingsPageProvider = ({children}) => {
 
   const updateSettingField = (deep, data) => {
     const _settingTabs = { ...settingTabs };
-    setIn(deep, data, _settingTabs);
+    updateObject(_settingTabs, deep, data);
     console.log(_settingTabs);
     setSettingTabs(_settingTabs);
   }
