@@ -57,7 +57,9 @@ const SettingsWrap = () => {
           {
             RenderDynamicComponent(settingTabs[0].templateData)
           }
-          {/* <DynamicComponent tag="Input" attrs={ { placeholder: 'Hello...!' } } /> */}
+          {
+            JSON.stringify(settingTabs)
+          }
         </div>
       </div>
     </div>

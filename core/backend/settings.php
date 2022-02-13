@@ -69,6 +69,7 @@ function hope_tab_general_settings_template() {
     ],
     [
       '_key' => 'a7b6b783e17a4249baea508bbebff895',
+      'name' => 'select-demo',
       'tag' => 'Select',
       'attrs' => [
         'defaultValue' => 'a',
