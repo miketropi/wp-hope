@@ -10,7 +10,6 @@ const HopeSelect = (props) => {
   const { updateSettingField } = useSettingsPage();
 
   return <Fragment>
-    { deep }
     <Select defaultValue={ defaultValue } onChange={ value => {
       updateSettingField(`${ deep }.attrs.defaultValue`, value);
     } }>

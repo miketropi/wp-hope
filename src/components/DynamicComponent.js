@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
-import { Input, Tabs } from 'antd';
+import { Input } from 'antd';
 import BlockContent from './BlockContent';
 import HopeSelect from './Fields/Select';
-const { TabPane } = Tabs;
+import { HopeTabs } from './Tabs';
 
 import map from 'lodash/map';
 import isArray from 'lodash/isArray';
@@ -23,8 +23,7 @@ const DynamicComponent = (props) => {
     Input,
     Select: HopeSelect,
     BlockContent,
-    Tabs,
-    TabPane,
+    Tabs: HopeTabs
   };
 
   const TagName = Components[tag];

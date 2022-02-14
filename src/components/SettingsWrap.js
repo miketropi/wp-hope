@@ -24,7 +24,8 @@ const SettingsWrap = () => {
   const {
     settingTabs, 
     defaultSettingTabsActive, 
-    setDefaultSettingTabsActive
+    setDefaultSettingTabsActive,
+    settings,
   } = useSettingsPage();
 
   return (
@@ -55,10 +56,11 @@ const SettingsWrap = () => {
       <div className="hope-settings-body">
         <div className="hope-settings-body--entry-summary">
           {
-            RenderDynamicComponent(settingTabs[0].templateData)
+            RenderDynamicComponent(settings.templateData)
           }
+
           {
-            JSON.stringify(settingTabs)
+            JSON.stringify(settings)
           }
         </div>
       </div>

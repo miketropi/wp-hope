@@ -1,6 +1,7 @@
 import React, {createContext, useContext, useState, useEffect} from "react";
 import map from "lodash/map";
-import { updateObject } from './helpers';
+import set from "lodash/set";
+import find from "lodash/find";
 
 const SettingsPageContext = createContext();
 
@@ -15,19 +16,37 @@ const SettingsPageProvider = ({children}) => {
     }
   }));
 
-  const updateSettingField = (deep, data) => {
-    const _settingTabs = { ...settingTabs };
-    updateObject(_settingTabs, deep, data);
-    console.log(_settingTabs);
-    setSettingTabs(_settingTabs);
+  const [settings, setSettings] = useState(find(settingTabs, o => { return o._key == 'settings' }));
+
+  const updateSettingField = (deep, value) => {
+    
+    const _settings = { ...settings };
+    const _settingData = _settings.templateData;
+
+    set(_settingData, deep, value);
+    _settings.templateData = _settingData;
+    setSettings(_settings);
   }
 
   const value = {
+    /**
+     * Tabs 
+     */
     settingTabs,
     setSettingTabs,
-    updateSettingField,
+
+    /**
+     * Default active tab
+     */
     defaultSettingTabsActive, 
     setDefaultSettingTabsActive,
+
+    /**
+     * Only settings 
+     */
+    settings, 
+    setSettings,
+    updateSettingField,
   }
 
   return <SettingsPageContext.Provider value={value}>
