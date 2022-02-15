@@ -25612,3 +25612,10 @@ body.hope-cause_page_hope-settings #wpcontent {
   width: 800px;
   margin: 0 auto; }
 
+#hope_settings .ant-input {
+  padding: 4px 11px;
+  border-radius: 1px; }
+
+#hope_settings .ant-input-affix-wrapper .ant-input {
+  padding: 0; }
+

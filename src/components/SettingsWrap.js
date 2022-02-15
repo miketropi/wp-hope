@@ -1,11 +1,9 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { useSettingsPage } from "../libs/context/SettingsPage";
 import { Menu } from "antd";
-import { RenderDynamicComponent } from "../components/DynamicComponent";
 import styled from "styled-components";
-import map from 'lodash/map';
 
-const {__} = wp.i18n;
+const { __ } = wp.i18n;
 const SettingNavWrapper = styled.div`
   display: flex;
   width: 100%;
@@ -13,6 +11,15 @@ const SettingNavWrapper = styled.div`
 
   .ant-menu-horizontal {
     border-bottom: none;
+  }
+
+  .ant-menu-item-selected {
+    font-weight: bold;
+  }
+
+  .ant-menu-horizontal {
+    width: 100%;
+    justify-content: center;
   }
 `;
 
@@ -22,10 +29,9 @@ const SettingNav = styled(Menu)`
 
 const SettingsWrap = () => {
   const {
-    settingTabs, 
-    defaultSettingTabsActive, 
-    setDefaultSettingTabsActive,
-    settings,
+    settingNavs,
+    defaultNavActive,
+    setDefaultNavActive,
   } = useSettingsPage();
 
   return (
@@ -38,14 +44,14 @@ const SettingsWrap = () => {
         <SettingNavWrapper>
           <SettingNav 
             mode="horizontal"
-            selectedKeys={ [defaultSettingTabsActive] }
+            selectedKeys={ [defaultNavActive] }
             onClick={ e => {
-              setDefaultSettingTabsActive(e.key);
+              setDefaultNavActive(e.key);
             } }>
-            { settingTabs.map(item => {
+            { settingNavs.map(item => {
               return (
                 <Menu.Item key={ item._key }>
-                  { item.name }
+                  { item.label }
                 </Menu.Item>
               )
             }) }
@@ -56,11 +62,15 @@ const SettingsWrap = () => {
       <div className="hope-settings-body">
         <div className="hope-settings-body--entry-summary">
           {
-            RenderDynamicComponent(settings.templateData)
-          }
-
-          {
-            JSON.stringify(settings)
+            settingNavs.map(item => {
+              const { _key, component } = item;
+              return <Fragment key={ `${ _key }_pane` }>
+                {
+                  defaultNavActive === _key && 
+                  component
+                }
+              </Fragment>
+            })
           }
         </div>
       </div>
