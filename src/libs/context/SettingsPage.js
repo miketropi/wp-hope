@@ -1,11 +1,11 @@
 import React, {createContext, useContext, useState, useEffect} from "react";
 import SettingsPane from "../../components/SettingsPane";
-import ChangeLogPane from "../../components/ChangelogPane";
+import DocumentPane from "../../components/Document";
 import UpdatePane from "../../components/UpdatePane";
 
 const { __ } = wp.i18n;
-const SettingsPageContext = createContext();
 const __HOPE = window.__HOPE;
+const SettingsPageContext = createContext();
 
 const SettingsPageProvider = ({children}) => {
   const [settingNavs, setSettingNavs] = useState([
@@ -17,7 +17,7 @@ const SettingsPageProvider = ({children}) => {
     {
       _key: 'document',
       label: __('Document', 'hope'),
-      component: <ChangeLogPane />,
+      component: <DocumentPane />,
     },
     {
       _key: 'update',
