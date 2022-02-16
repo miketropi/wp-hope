@@ -3,6 +3,7 @@ import { PageHeader, Button, Collapse, Space, Divider, Tabs, Form, Input, Checkb
 import GeneralOptionsPane from './tab-options/GeneralOptionsPane';
 import PaymentGatewayOptionsPane from './tab-options/PaymentGatewayOptionsPane';
 import EmailOptionsPane from './tab-options/EmailOptionsPane';
+import find from 'lodash/find';
 
 const { __ } = wp.i18n; 
 const { TabPane } = Tabs;
@@ -77,6 +78,9 @@ const SettingsPane = (props) => {
             ]}
           >
             <Tabs defaultActiveKey="general" type="card" onChange={ (e) => {
+              let _tabSettings = [...tabSettings];
+              let current = find(tabSettings, o => { return o._key == e });
+              setLastRoute(current?.label);
             } }>
               {
                 tabSettings.map(_tab => {
