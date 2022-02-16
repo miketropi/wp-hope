@@ -4,6 +4,7 @@ import GeneralOptionsPane from './tab-options/GeneralOptionsPane';
 import PaymentGatewayOptionsPane from './tab-options/PaymentGatewayOptionsPane';
 import EmailOptionsPane from './tab-options/EmailOptionsPane';
 import find from 'lodash/find';
+import { useSettingsPage } from '../libs/context/SettingsPage';
 
 const { __ } = wp.i18n; 
 const { TabPane } = Tabs;
@@ -68,7 +69,7 @@ const SettingsPane = (props) => {
       >
         <PageHeader
           ghost={false}
-          breadcrumb={{ routes }}
+          // breadcrumb={{ routes }}
           title={ __('Hope Settings', 'hope') }
           extra={[
             <Button key="button-export">Export</Button>,

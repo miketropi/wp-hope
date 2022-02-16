@@ -24,6 +24,7 @@ function hope_admin_enqueue_scripts() {
   wp_localize_script('hope-script', 'HOPE_DATA', [
     'plgName' => __('Hope', 'hope'),
     'plgVer' => HOPE_VER,
+    'globalOptions' => hope_all_options(),
   ]);
 } 
 add_action('admin_enqueue_scripts', 'hope_admin_enqueue_scripts');

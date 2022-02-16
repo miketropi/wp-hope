@@ -20,3 +20,7 @@ function hope_global_options_register() {
     'hope_success_page' => get_option('hope_success_page', ''),
   ]);
 }
+
+function hope_all_options() {
+  return hope_global_options_register();
+}

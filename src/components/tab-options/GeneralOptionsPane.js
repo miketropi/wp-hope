@@ -15,6 +15,8 @@ const GeneralOptions = () => {
       <Input />
     </Form.Item>
     
+    <Divider />
+      
     <Form.Item
       label="Failed Donation Page"
       name="hope_failed_donation_page"
@@ -23,6 +25,8 @@ const GeneralOptions = () => {
       <Input />
     </Form.Item>
 
+    <Divider />
+
     <Form.Item
       label="Donor Dashboard Page"
       name="hope_donor_dashboard_page"
@@ -30,6 +34,8 @@ const GeneralOptions = () => {
     >
       <Input />
     </Form.Item>
+
+    <Divider />
 
     <Form.Item
       label="Base Country"

@@ -26,6 +26,7 @@ const SettingsPageProvider = ({children}) => {
     }
   ]);
   const [defaultNavActive, setDefaultNavActive] = useState(settingNavs[0]._key);
+  const [globalOptions, setGlobalOptions] = useState(HOPE_DATA.globalOptions);
 
   const onAddSettingNav = (name, label, component) => {
     let __settingNav = [...settingNavs];
@@ -36,7 +37,8 @@ const SettingsPageProvider = ({children}) => {
 
   const value = {
     settingNavs, setSettingNavs,
-    defaultNavActive, setDefaultNavActive
+    defaultNavActive, setDefaultNavActive,
+    globalOptions, setGlobalOptions
   }
 
   __HOPE.app = value;
