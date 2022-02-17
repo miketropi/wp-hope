@@ -2,6 +2,7 @@ import React, {createContext, useContext, useState, useEffect} from "react";
 import SettingsPane from "../../components/SettingsPane";
 import DocumentPane from "../../components/Document";
 import UpdatePane from "../../components/UpdatePane";
+import map from 'lodash/map';
 
 const { __ } = wp.i18n;
 const __HOPE = window.__HOPE;

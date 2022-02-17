@@ -11,6 +11,7 @@ const { TabPane } = Tabs;
 const { Panel } = Collapse;
 
 const SettingsPane = (props) => {
+  const { globalOptions, setGlobalOptions } = useSettingsPage();
   const [tabSettings, setTabSettings] = useState([
     {
       _key: 'general',
@@ -42,6 +43,10 @@ const SettingsPane = (props) => {
   const [lastRoute, setLastRoute] = useState('General');
   const [form] = Form.useForm();
 
+  useEffect(() => {
+    form.setFieldsValue({...globalOptions})
+  }, []);
+
   const routes = [
     { path: '', breadcrumbName: __('Hope', 'hope') },
     { path: '', breadcrumbName: __('Settings', 'hope') },
@@ -56,6 +61,10 @@ const SettingsPane = (props) => {
     console.log('Failed:', errorInfo);
   };
 
+const onFieldsChange = (_, newFields) => {
+  console.log(_, newFields);
+}
+
   return <Fragment>
     <div className="site-page-header-ghost-wrapper">
       <Form
@@ -65,6 +74,7 @@ const SettingsPane = (props) => {
         initialValues={ { remember: true } }
         onFinish={ onFinish }
         onFinishFailed={ onFinishFailed }
+        onFieldsChange={ onFieldsChange }
         autoComplete="off"
       >
         <PageHeader
