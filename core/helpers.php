@@ -34,15 +34,15 @@ function hope_all_options() {
   return hope_global_options_register();
 }
 
-function hope_get_all_pages() {
-  $pages = get_pages([
-    'post_status' => ['publish', 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', 'trash'],
-  ]);
-  echo '<pre>';
-  print_r($pages);
-  echo '</pre>';
-}
+// function hope_get_all_pages() {
+//   $pages = get_pages([
+//     'post_status' => ['publish', 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', 'trash'],
+//   ]);
+//   echo '<pre>';
+//   print_r($pages);
+//   echo '</pre>';
+// }
 
-add_action('init', function() {
-  hope_get_all_pages();
-});
+// add_action('init', function() {
+//   hope_get_all_pages();
+// });

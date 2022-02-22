@@ -2,13 +2,14 @@ import React, {createContext, useContext, useState, useEffect} from "react";
 import SettingsPane from "../../components/SettingsPane";
 import DocumentPane from "../../components/Document";
 import UpdatePane from "../../components/UpdatePane";
-import map from 'lodash/map';
+import * as Api from '../api';
 
 const { __ } = wp.i18n;
 const __HOPE = window.__HOPE;
 const SettingsPageContext = createContext();
 
 const SettingsPageProvider = ({children}) => {
+  const [pages, setPages] = useState([]);
   const [settingNavs, setSettingNavs] = useState([
     {
       _key: 'settings',
@@ -28,6 +29,15 @@ const SettingsPageProvider = ({children}) => {
   ]);
   const [defaultNavActive, setDefaultNavActive] = useState(settingNavs[0]._key);
   const [globalOptions, setGlobalOptions] = useState(HOPE_DATA.globalOptions);
+
+  useEffect(() => {
+    const getPages = async () => {
+      const pages = await Api.getPages();
+      console.log(1, pages);
+    }
+
+    getPages();
+  }, []);
 
   const onAddSettingNav = (name, label, component) => {
     let __settingNav = [...settingNavs];
