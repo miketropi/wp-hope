@@ -25619,3 +25619,8 @@ body.hope-cause_page_hope-settings #wpcontent {
 #hope_settings .ant-input-affix-wrapper .ant-input {
   padding: 0; }
 
+.ant-select-selector input.ant-select-selection-search-input {
+  outline: none;
+  border: none;
+  box-shadow: none; }
+

@@ -33,7 +33,7 @@ const SettingsPageProvider = ({children}) => {
   useEffect(() => {
     const getPages = async () => {
       const pages = await Api.getPages();
-      console.log(1, pages);
+      setPages(pages);
     }
 
     getPages();
@@ -49,7 +49,8 @@ const SettingsPageProvider = ({children}) => {
   const value = {
     settingNavs, setSettingNavs,
     defaultNavActive, setDefaultNavActive,
-    globalOptions, setGlobalOptions
+    globalOptions, setGlobalOptions,
+    pages, setPages,
   }
 
   __HOPE.app = value;

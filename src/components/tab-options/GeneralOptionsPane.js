@@ -1,18 +1,36 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { PageHeader, Button, Collapse, Space, Divider, Tabs, Form, Input, Checkbox } from 'antd';
+import { PageHeader, Button, Collapse, Space, Divider, Tabs, Form, Input, Checkbox, Select } from 'antd';
+import { useSettingsPage } from '../../libs/context/SettingsPage';
 
 const { __ } = wp.i18n;
 const { TabPane } = Tabs;
 const { Panel } = Collapse;
+const { Option } = Select;
 
 const GeneralOptions = () => {
+  const { pages } = useSettingsPage();
+
   return <Fragment>
+    {/* { JSON.stringify(pages) } */}
     <Form.Item
       label="Success Page"
       name="hope_success_page"
       tooltip={ __('The page donors are sent to after completing their donations. The [hope_receipt] shortcode should be on this page.', 'hope') }
     >
-      <Input />
+      <Select 
+        showSearch
+        placeholder={ __('Select success page', 'hope') }
+        filterOption={(input, option) =>
+          option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+        }>
+        {
+          (pages != null) &&
+          pages.map(page => {
+            const title = `${page.title.rendered} (#${ page.id })`;
+            return <Option value={ page.id } key={ page.id }>{ title }</Option>
+          })
+        }
+      </Select>
     </Form.Item>
       
     <Form.Item
@@ -20,7 +38,17 @@ const GeneralOptions = () => {
       name="hope_failed_donation_page"
       tooltip={ __('The page donors are sent to if their donation is cancelled or fails.', 'hope') }
     >
-      <Input />
+      <Select 
+        showSearch
+        placeholder={ __('Select failed donation page', 'hope') }>
+        {
+          (pages != null) &&
+          pages.map(page => {
+            const title = `${page.title.rendered} (#${ page.id })`;
+            return <Option value={ page.id } key={ page.id }>{ title }</Option>
+          })
+        }
+      </Select>
     </Form.Item>
 
     <Form.Item
@@ -28,7 +56,17 @@ const GeneralOptions = () => {
       name="hope_donor_dashboard_page"
       tooltip={ __('This is the page where donors can manage their information, review history and more -- all in one place. The Donor Dashboard block or [hope_donor_dashboard] shortcode should be on this page.', 'hope') }
     >
-      <Input />
+      <Select 
+        showSearch
+        placeholder={ __('Select donor dashboard page', 'hope') }> 
+        {
+          (pages != null) &&
+          pages.map(page => {
+            const title = `${page.title.rendered} (#${ page.id })`;
+            return <Option value={ page.id } key={ page.id }>{ title }</Option>
+          })
+        }
+      </Select>
     </Form.Item>
 
     <Form.Item
