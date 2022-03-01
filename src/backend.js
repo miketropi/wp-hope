@@ -2,8 +2,8 @@ import './general';
 
 import React from "react";
 import ReactDOM from "react-dom";
-import {BackendAppProvider} from "./libs/context/BackendApp";
-import {SettingsPageProvider} from "./libs/context/SettingsPage";
+import { BackendAppProvider } from "./libs/context/BackendApp";
+import { SettingsPageProvider } from "./libs/context/SettingsPage";
 import SettingsWrap from "./components/SettingsWrap";
 
 /**
